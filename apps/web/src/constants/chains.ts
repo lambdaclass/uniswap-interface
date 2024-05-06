@@ -16,6 +16,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [ChainId.AVALANCHE]: 'avalanche',
   [ChainId.BASE]: 'base',
   [ChainId.BLAST]: 'blast',
+  [270]: 'zksync',
 } as const
 
 // Include ChainIds in this array if they are not supported by the UX yet, but are already in the SDK.
@@ -46,7 +47,11 @@ export function isSupportedChain(
   if (featureFlags && chainId && chainId in featureFlags) {
     return featureFlags[chainId]
   }
-  return !!chainId && SUPPORTED_CHAINS.indexOf(chainId) !== -1 && NOT_YET_UX_SUPPORTED_CHAIN_IDS.indexOf(chainId) === -1
+  return (
+    !!chainId &&
+    (SUPPORTED_CHAINS.indexOf(chainId) !== -1 || chainId === 270) &&
+    NOT_YET_UX_SUPPORTED_CHAIN_IDS.indexOf(chainId) === -1
+  )
 }
 
 export function asSupportedChain(
@@ -70,6 +75,7 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   ChainId.AVALANCHE,
   ChainId.BASE,
   ChainId.BLAST,
+  270,
 ] as const
 
 /**
@@ -85,6 +91,7 @@ export const TESTNET_CHAIN_IDS = [
   ChainId.ARBITRUM_GOERLI,
   ChainId.OPTIMISM_GOERLI,
   ChainId.CELO_ALFAJORES,
+  270,
 ] as const
 
 /**
@@ -115,6 +122,7 @@ export const L2_CHAIN_IDS = [
   ChainId.OPTIMISM_GOERLI,
   ChainId.BASE,
   ChainId.BLAST,
+  270,
 ] as const
 
 export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number]
@@ -126,6 +134,7 @@ export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number]
  */
 export function getChainPriority(chainId: ChainId): number {
   switch (chainId) {
+    case 270:
     case ChainId.MAINNET:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:

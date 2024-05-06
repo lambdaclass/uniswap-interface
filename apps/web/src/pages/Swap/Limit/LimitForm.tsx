@@ -220,6 +220,8 @@ function LimitForm({ onCurrencyChange }: LimitFormProps) {
     maxInputAmount && onTypeInput('inputAmount')(maxInputAmount.toExact())
   }, [maxInputAmount, onTypeInput])
 
+  console.log('CurrencyBalances', currencyBalances)
+
   const hasInsufficientFunds =
     parsedAmounts.INPUT && currencyBalances.INPUT ? currencyBalances.INPUT.lessThan(parsedAmounts.INPUT) : false
 
@@ -431,6 +433,7 @@ function SubmitOrderButton({
   }
 
   if (hasInsufficientFunds) {
+    console.log('Insufficient forms')
     return (
       <ButtonError disabled>
         <Text fontSize={20}>

@@ -266,10 +266,10 @@ export function getPoolDetailsURL(address: string, chain: Chain) {
 
 export function unwrapToken<
   T extends
-    | {
-        address?: string | null
-      }
-    | undefined
+  | {
+    address?: string | null
+  }
+  | undefined
 >(chainId: number, token: T): T {
   if (!token?.address) return token
 

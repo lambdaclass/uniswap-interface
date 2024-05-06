@@ -122,6 +122,10 @@ export function useDerivedSwapInfo(state: SwapState): SwapInfo {
   const { account, chainId } = useWeb3React()
   const nativeCurrency = useNativeCurrency(chainId)
   const balance = useCurrencyBalance(account ?? undefined, nativeCurrency)
+  console.log('balance', balance)
+  // console.log("native", nativeCurrency)
+  // console.log("account", account)
+  // console.log("chainId", chainId)
 
   const {
     currencyState: { inputCurrency, outputCurrency },
@@ -211,6 +215,7 @@ export function useDerivedSwapInfo(state: SwapState): SwapInfo {
     }
 
     if (insufficientGas) {
+      console.log('Insufficient 5')
       inputError = <Trans>Insufficient {{ symbol: nativeCurrency.symbol }} balance</Trans>
     }
 
@@ -218,6 +223,7 @@ export function useDerivedSwapInfo(state: SwapState): SwapInfo {
     const [balanceIn, maxAmountIn] = [currencyBalances[Field.INPUT], trade?.trade?.maximumAmountIn(allowedSlippage)]
 
     if (balanceIn && maxAmountIn && balanceIn.lessThan(maxAmountIn)) {
+      console.log('Insufficient 6')
       inputError = <Trans>Insufficient {{ symbol: balanceIn.currency.symbol }} balance</Trans>
     }
 

@@ -465,10 +465,12 @@ export function useV3DerivedMintInfo(
   const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
 
   if (currencyAAmount && currencyBalances?.[Field.CURRENCY_A]?.lessThan(currencyAAmount)) {
+    console.log('Insufficient 3')
     errorMessage = <Trans>Insufficient {{ symbol: currencies[Field.CURRENCY_A]?.symbol }} balance</Trans>
   }
 
   if (currencyBAmount && currencyBalances?.[Field.CURRENCY_B]?.lessThan(currencyBAmount)) {
+    console.log('Insufficient 4')
     errorMessage = <Trans>Insufficient {{ symbol: currencies[Field.CURRENCY_B]?.symbol }} balance</Trans>
   }
 

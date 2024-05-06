@@ -24,7 +24,10 @@ export const LimitContext = createContext<LimitContextType>({
 })
 
 export function useLimitContext() {
-  return useContext(LimitContext)
+  const context = useContext(LimitContext)
+  console.log('limitState', context.limitState)
+  console.log('derivedLimitInfo', context.derivedLimitInfo)
+  return context
 }
 
 export function LimitContextProvider({ children }: PropsWithChildren) {

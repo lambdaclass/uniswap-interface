@@ -46,6 +46,7 @@ import {
   WETH_AVALANCHE,
   WETH_POLYGON,
   WETH_POLYGON_MUMBAI,
+  WETH_ZKSYNC,
   WRAPPED_NATIVE_CURRENCY,
   nativeOnChain,
 } from './tokens'
@@ -161,6 +162,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     USDT_AVALANCHE,
     WETH_AVALANCHE,
   ].map(buildCurrencyInfo),
+  [270]: [nativeOnChain(270), WETH_ZKSYNC].map(buildCurrencyInfo),
 }
 
 // used to construct the list of all pairs we consider by default in the frontend

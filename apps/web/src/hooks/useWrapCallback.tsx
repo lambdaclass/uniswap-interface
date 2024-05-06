@@ -45,8 +45,10 @@ export function WrapErrorText({ wrapInputError }: { wrapInputError: WrapInputErr
       return <Trans>Enter {{ sym: wrapped?.symbol }} amount</Trans>
 
     case WrapInputError.INSUFFICIENT_NATIVE_BALANCE:
+      console.log('WrapErrorText -> native', native)
       return <Trans>Insufficient {{ sym: native?.symbol }} balance</Trans>
     case WrapInputError.INSUFFICIENT_WRAPPED_BALANCE:
+      console.log('WrapErrorText -> wrapped', wrapped)
       return <Trans>Insufficient {{ sym: wrapped?.symbol }} balance</Trans>
   }
 }

@@ -131,7 +131,9 @@
     "wss://relay.walletconnect.com",
     "wss://relay.walletconnect.org",
     "wss://www.walletlink.org",
-    "wss://ws-us3.pusher.com/"
+    "wss://ws-us3.pusher.com/",
+    "http://localhost:3050",
+    "http://localhost:3000"
   ],
   "workerSrc": [
     "'self'",

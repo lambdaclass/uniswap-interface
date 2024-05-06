@@ -95,6 +95,18 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
             bgColor: 'rgba(252, 252, 3, 0.16)',
             textColor: 'rgba(17, 20, 12, 1)',
           }
+    case 270:
+      return darkMode
+        ? {
+            Symbol: blast,
+            bgColor: 'rgba(252, 252, 3, 0.12)',
+            textColor: 'rgba(252, 252, 3, 1) ',
+          }
+        : {
+            Symbol: blastLight,
+            bgColor: 'rgba(252, 252, 3, 0.16)',
+            textColor: 'rgba(17, 20, 12, 1)',
+          }
     default:
       return undefined
   }

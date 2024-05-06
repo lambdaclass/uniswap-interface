@@ -4,6 +4,9 @@ import invariant from 'tiny-invariant'
 // eslint-disable-next-line no-restricted-syntax
 export const NATIVE_CHAIN_ID = 'NATIVE'
 
+// export const DAI_ZKSYNC = new Token(270, '0x5E6D086F5eC079ADFF4FB3774CDf3e8D6a34F7E9', 18, 'DAI', 'DAI Zksync')
+export const WETH_ZKSYNC = new Token(270, '0x70a0F165d6f8054d0d0CF8dFd4DD2005f0AF6B55', 18, 'WETH', 'WETH Zksync')
+
 export const USDC_MAINNET = new Token(
   ChainId.MAINNET,
   '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -344,6 +347,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'Wrapped AVAX'
   ),
   [ChainId.BLAST]: new Token(ChainId.BLAST, '0x4300000000000000000000000000000000000004', 18, 'WETH', 'Wrapped Ether'),
+  [270]: WETH_ZKSYNC,
 }
 
 export function isCelo(chainId: number): chainId is ChainId.CELO | ChainId.CELO_ALFAJORES {
@@ -510,6 +514,7 @@ const STABLECOINS: { [chainId in ChainId]: Token[] } = {
   [ChainId.ZORA]: [],
   [ChainId.ROOTSTOCK]: [],
   [ChainId.BLAST]: [USDB_BLAST],
+  [270]: [],
 }
 
 export function isStablecoin(currency?: Currency): boolean {

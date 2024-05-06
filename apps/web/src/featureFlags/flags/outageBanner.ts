@@ -53,5 +53,6 @@ export function useOutageBanners(): Record<ChainId, boolean> {
     [ChainId.ZORA]: false,
     [ChainId.ROOTSTOCK]: false,
     [ChainId.BLAST]: false,
+    [270]: false,
   }
 }

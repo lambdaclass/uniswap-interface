@@ -33,6 +33,7 @@ export function useNativeCurrencyBalances(uncheckedAddresses?: (string | undefin
   )
 
   const results = useSingleContractMultipleData(multicallContract, 'getEthBalance', validAddressInputs)
+  console.log('results', results)
 
   return useMemo(
     () =>
@@ -125,6 +126,9 @@ export function useCurrencyBalances(
   const tokenBalances = useTokenBalances(account, tokens)
   const containsETH: boolean = useMemo(() => currencies?.some((currency) => currency?.isNative) ?? false, [currencies])
   const ethBalance = useNativeCurrencyBalances(useMemo(() => (containsETH ? [account] : []), [containsETH, account]))
+
+  console.log('currencies', currencies)
+  console.log('account', account)
 
   return useMemo(
     () =>

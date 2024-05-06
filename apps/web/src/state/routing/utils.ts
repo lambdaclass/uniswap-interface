@@ -229,6 +229,8 @@ export async function transformQuoteToTrade(
 ): Promise<TradeResult> {
   const { tradeType, needsWrapIfUniswapX, routerPreference, account, amount } = args
 
+  console.log('data', data)
+  console.log('routerPreference', routerPreference)
   const showUniswapXTrade = data.routing === URAQuoteType.DUTCH_LIMIT && routerPreference === RouterPreference.X
 
   const [currencyIn, currencyOut] = getTradeCurrencies(args, showUniswapXTrade)
