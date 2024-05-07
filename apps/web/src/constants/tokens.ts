@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant'
 // eslint-disable-next-line no-restricted-syntax
 export const NATIVE_CHAIN_ID = 'NATIVE'
 
-// export const DAI_ZKSYNC = new Token(270, '0x5E6D086F5eC079ADFF4FB3774CDf3e8D6a34F7E9', 18, 'DAI', 'DAI Zksync')
+export const DAI_ZKSYNC = new Token(270, '0x5E6D086F5eC079ADFF4FB3774CDf3e8D6a34F7E9', 18, 'DAI', 'DAI Zksync')
 export const WETH_ZKSYNC = new Token(270, '0x70a0F165d6f8054d0d0CF8dFd4DD2005f0AF6B55', 18, 'WETH', 'WETH Zksync')
 
 export const USDC_MAINNET = new Token(

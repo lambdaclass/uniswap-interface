@@ -122,10 +122,6 @@ export function useDerivedSwapInfo(state: SwapState): SwapInfo {
   const { account, chainId } = useWeb3React()
   const nativeCurrency = useNativeCurrency(chainId)
   const balance = useCurrencyBalance(account ?? undefined, nativeCurrency)
-  console.log('balance', balance)
-  // console.log("native", nativeCurrency)
-  // console.log("account", account)
-  // console.log("chainId", chainId)
 
   const {
     currencyState: { inputCurrency, outputCurrency },

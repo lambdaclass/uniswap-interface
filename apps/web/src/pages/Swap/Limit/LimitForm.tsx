@@ -220,8 +220,6 @@ function LimitForm({ onCurrencyChange }: LimitFormProps) {
     maxInputAmount && onTypeInput('inputAmount')(maxInputAmount.toExact())
   }, [maxInputAmount, onTypeInput])
 
-  console.log('CurrencyBalances', currencyBalances)
-
   const hasInsufficientFunds =
     parsedAmounts.INPUT && currencyBalances.INPUT ? currencyBalances.INPUT.lessThan(parsedAmounts.INPUT) : false
 
@@ -246,16 +244,16 @@ function LimitForm({ onCurrencyChange }: LimitFormProps) {
     const formattedInput = limitState.isInputAmountFixed
       ? limitState.inputAmount
       : formatCurrencyAmount({
-          amount: derivedLimitInfo.parsedAmounts[Field.INPUT],
-          type: NumberType.SwapTradeAmount,
-          placeholder: '',
-        })
+        amount: derivedLimitInfo.parsedAmounts[Field.INPUT],
+        type: NumberType.SwapTradeAmount,
+        placeholder: '',
+      })
     const formattedOutput = limitState.isInputAmountFixed
       ? formatCurrencyAmount({
-          amount: derivedLimitInfo.parsedAmounts[Field.OUTPUT],
-          type: NumberType.SwapTradeAmount,
-          placeholder: '',
-        })
+        amount: derivedLimitInfo.parsedAmounts[Field.OUTPUT],
+        type: NumberType.SwapTradeAmount,
+        placeholder: '',
+      })
       : limitState.outputAmount
 
     return {

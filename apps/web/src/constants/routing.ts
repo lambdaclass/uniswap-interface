@@ -18,6 +18,7 @@ import {
   DAI_BSC,
   DAI_OPTIMISM,
   DAI_POLYGON,
+  DAI_ZKSYNC,
   ETH_BSC,
   OP,
   PORTAL_ETH_CELO,
@@ -162,7 +163,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     USDT_AVALANCHE,
     WETH_AVALANCHE,
   ].map(buildCurrencyInfo),
-  [270]: [nativeOnChain(270), WETH_ZKSYNC].map(buildCurrencyInfo),
+  [270]: [nativeOnChain(270), WETH_ZKSYNC, DAI_ZKSYNC].map(buildCurrencyInfo),
 }
 
 // used to construct the list of all pairs we consider by default in the frontend

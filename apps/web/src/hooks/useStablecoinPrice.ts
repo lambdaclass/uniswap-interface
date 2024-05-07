@@ -22,6 +22,7 @@ import {
   USDC_POLYGON_MUMBAI,
   USDC_SEPOLIA,
   USDT_BSC,
+  DAI_ZKSYNC,
 } from '../constants/tokens'
 
 // Stablecoin amounts used when calculating spot price for a given currency.
@@ -42,7 +43,7 @@ export const STABLECOIN_AMOUNT_OUT: { [key in SupportedInterfaceChain]: Currency
   [ChainId.POLYGON_MUMBAI]: CurrencyAmount.fromRawAmount(USDC_POLYGON_MUMBAI, 10_000e6),
   [ChainId.CELO_ALFAJORES]: CurrencyAmount.fromRawAmount(CUSD_CELO_ALFAJORES, 10_000e6),
   [ChainId.BLAST]: CurrencyAmount.fromRawAmount(USDB_BLAST, 10_000e18),
-  [270]: CurrencyAmount.fromRawAmount(USDC_POLYGON, 10_000e6),
+  [270]: CurrencyAmount.fromRawAmount(DAI_ZKSYNC, 10_000e6),
 }
 
 /**

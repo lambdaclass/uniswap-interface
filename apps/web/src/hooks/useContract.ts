@@ -59,6 +59,9 @@ export function useContract<T extends Contract = Contract>(
     let address: string | undefined
     if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap
     else address = addressOrAddressMap[chainId]
+    if (chainId === 270 && address === undefined) {
+      address = "0xD75Bf167785EAe2197ef92637337259bfD16bDE9"
+    }
     if (!address) return null
     try {
       return getContract(address, ABI, provider, withSignerIfPossible && account ? account : undefined)

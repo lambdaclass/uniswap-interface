@@ -25,8 +25,6 @@ export const LimitContext = createContext<LimitContextType>({
 
 export function useLimitContext() {
   const context = useContext(LimitContext)
-  console.log('limitState', context.limitState)
-  console.log('derivedLimitInfo', context.derivedLimitInfo)
   return context
 }
 
