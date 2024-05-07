@@ -132,7 +132,7 @@ export const PUBLIC_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
     'https://blastl2-mainnet.public.blastapi.io',
     'https://blast.blockpi.network/v1/rpc/public',
   ],
-  [270]: [
+  [ChainId.ZKSYNC]: [
     // "Safe" URLs
     'http://localhost:3050',
   ],
@@ -158,7 +158,7 @@ export const APP_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
   [ChainId.AVALANCHE]: [`https://avalanche-mainnet.infura.io/v3/${INFURA_KEY}`],
   [ChainId.BASE]: [`https://base-mainnet.infura.io/v3/${INFURA_KEY}`],
   [ChainId.BLAST]: [`https://blast-mainnet.infura.io/v3/${INFURA_KEY}`],
-  [270]: [`http://localhost:3050`],
+  [ChainId.ZKSYNC]: [`http://localhost:3050`],
 }
 
 export const INFURA_PREFIX_TO_CHAIN_ID: { [prefix: string]: ChainId } = {

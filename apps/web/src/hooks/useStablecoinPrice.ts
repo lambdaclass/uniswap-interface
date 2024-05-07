@@ -10,6 +10,7 @@ import {
   CUSD_CELO,
   CUSD_CELO_ALFAJORES,
   DAI_OPTIMISM,
+  DAI_ZKSYNC,
   USDB_BLAST,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
@@ -22,7 +23,6 @@ import {
   USDC_POLYGON_MUMBAI,
   USDC_SEPOLIA,
   USDT_BSC,
-  DAI_ZKSYNC,
 } from '../constants/tokens'
 
 // Stablecoin amounts used when calculating spot price for a given currency.

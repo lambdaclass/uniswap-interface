@@ -60,7 +60,7 @@ export function useContract<T extends Contract = Contract>(
     if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap
     else address = addressOrAddressMap[chainId]
     if (chainId === 270 && address === undefined) {
-      address = "0xD75Bf167785EAe2197ef92637337259bfD16bDE9"
+      address = '0xD75Bf167785EAe2197ef92637337259bfD16bDE9'
     }
     if (!address) return null
     try {
