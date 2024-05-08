@@ -59,8 +59,8 @@ export function useContract<T extends Contract = Contract>(
     let address: string | undefined
     if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap
     else address = addressOrAddressMap[chainId]
-    if (chainId === 270 && address === undefined) {
-      address = '0xD75Bf167785EAe2197ef92637337259bfD16bDE9'
+    if (chainId === ChainId.ZKSYNC && address === undefined) {
+      address = '0x7C0b6836C85cA213d3136CaD25B52d2C4E044934'
     }
     if (!address) return null
     try {

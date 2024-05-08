@@ -6,7 +6,7 @@ import {
   SharedEventName,
   SwapEventName,
 } from '@uniswap/analytics-events'
-import { Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
+import { ChainId, Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { Trace, TraceEvent, sendAnalyticsEvent, useTrace } from 'analytics'
@@ -306,8 +306,8 @@ export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapF
   )
 
   const maximumAmountIn = useMaxAmountIn(trade, allowedSlippage)
-  let router_address = '0x4B6A0Fc186Fa4eAbbF22d4edEa4ff959B057C88A'
-  if (chainId !== 270) {
+  let router_address = '0x3D91f511c789783766200B3934CE38b60b57cE27'
+  if (chainId !== ChainId.ZKSYNC) {
     router_address = UNIVERSAL_ROUTER_ADDRESS(chainId ?? 1)
   }
   const allowance = usePermit2Allowance(

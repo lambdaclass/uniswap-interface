@@ -73,7 +73,6 @@ export function BlockNumberProvider({ children }: PropsWithChildren) {
       })
 
       const onBlock = (block: number) => {
-        console.log('Chain block: ', activeChainId, block)
         onChainBlock(activeChainId, block)
       }
       provider.on('block', onBlock)

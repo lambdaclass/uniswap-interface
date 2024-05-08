@@ -95,7 +95,7 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
             bgColor: 'rgba(252, 252, 3, 0.16)',
             textColor: 'rgba(17, 20, 12, 1)',
           }
-    case 270:
+    case ChainId.ZKSYNC:
       return darkMode
         ? {
             Symbol: blast,

@@ -168,6 +168,7 @@
   "dependencies": {
     "@apollo/client": "3.9.6",
     "@coinbase/wallet-sdk": "3.7.2",
+    "@ethersproject/providers": "5.7.2",
     "@graphql-codegen/cli": "^3.3.1",
     "@graphql-codegen/client-preset": "^3.0.1",
     "@graphql-codegen/typescript": "^3.0.4",

@@ -49,7 +49,7 @@ const DEFAULT_CHAINS = [
   ChainId.AVALANCHE,
   ChainId.BASE,
   ChainId.BLAST,
-  270,
+  ChainId.ZKSYNC,
 ]
 
 type UseMultiChainPositionsData = { positions?: PositionInfo[]; loading: boolean }
