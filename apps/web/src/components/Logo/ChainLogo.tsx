@@ -16,6 +16,7 @@ import { ReactComponent as celoLight } from './ChainSymbols/celo_light.svg'
 import { ReactComponent as ethereum } from './ChainSymbols/ethereum.svg'
 import { ReactComponent as optimism } from './ChainSymbols/optimism.svg'
 import { ReactComponent as polygon } from './ChainSymbols/polygon.svg'
+import { ReactComponent as zksync } from './ChainSymbols/zksync.svg'
 
 type SVG = FunctionComponent<React.SVGProps<SVGSVGElement>>
 type ChainUI = { Symbol: SVG; bgColor: string; textColor: string }
@@ -56,15 +57,15 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
     case ChainId.CELO_ALFAJORES:
       return darkMode
         ? {
-            Symbol: celo,
-            bgColor: '#FCFF5233',
-            textColor: '#FCFF52',
-          }
+          Symbol: celo,
+          bgColor: '#FCFF5233',
+          textColor: '#FCFF52',
+        }
         : {
-            Symbol: celoLight,
-            bgColor: '#FCFF5299',
-            textColor: '#655947',
-          }
+          Symbol: celoLight,
+          bgColor: '#FCFF5299',
+          textColor: '#655947',
+        }
     case ChainId.AVALANCHE:
       return {
         Symbol: avax,
@@ -86,27 +87,21 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
     case ChainId.BLAST:
       return darkMode
         ? {
-            Symbol: blast,
-            bgColor: 'rgba(252, 252, 3, 0.12)',
-            textColor: 'rgba(252, 252, 3, 1) ',
-          }
+          Symbol: blast,
+          bgColor: 'rgba(252, 252, 3, 0.12)',
+          textColor: 'rgba(252, 252, 3, 1) ',
+        }
         : {
-            Symbol: blastLight,
-            bgColor: 'rgba(252, 252, 3, 0.16)',
-            textColor: 'rgba(17, 20, 12, 1)',
-          }
+          Symbol: blastLight,
+          bgColor: 'rgba(252, 252, 3, 0.16)',
+          textColor: 'rgba(17, 20, 12, 1)',
+        }
     case ChainId.ZKSYNC:
-      return darkMode
-        ? {
-            Symbol: blast,
-            bgColor: 'rgba(252, 252, 3, 0.12)',
-            textColor: 'rgba(252, 252, 3, 1) ',
-          }
-        : {
-            Symbol: blastLight,
-            bgColor: 'rgba(252, 252, 3, 0.16)',
-            textColor: 'rgba(17, 20, 12, 1)',
-          }
+      return {
+        Symbol: zksync,
+        bgColor: '#d0d0d0',
+        textColor: '#1e1e1e',
+      }
     default:
       return undefined
   }
