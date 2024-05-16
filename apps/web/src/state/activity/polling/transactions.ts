@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo } from 'react'
 import { useAppDispatch } from 'state/hooks'
 import { isPendingTx, useMultichainTransactions, useTransactionRemover } from 'state/transactions/hooks'
 import { checkedTransaction } from 'state/transactions/reducer'
-import { TransactionDetails } from 'state/transactions/types'
+import { SerializableTransactionReceipt, TransactionDetails } from 'state/transactions/types'
 import { FeatureFlags } from 'uniswap/src/features/gating/flags'
 import { useFeatureFlag } from 'uniswap/src/features/gating/hooks'
 import { SUBSCRIPTION_CHAINIDS } from 'utilities/src/apollo/constants'
@@ -117,12 +117,22 @@ export function usePollPendingTransactions(onActivityUpdate: OnActivityUpdate) {
         const { promise, cancel } = getReceipt(tx)
         promise
           .then((receipt) => {
+            const serializableReceipt: SerializableTransactionReceipt = {
+              blockNumber: receipt.blockNumber,
+              status: receipt.status,
+              transactionHash: receipt.transactionHash,
+              blockHash: receipt.blockHash,
+              transactionIndex: receipt.transactionIndex,
+              contractAddress: receipt.contractAddress,
+              to: receipt.to,
+              from: receipt.from,
+            }
             fastForwardBlockNumber(receipt.blockNumber)
             onActivityUpdate({
               type: 'transaction',
               chainId,
               original: tx,
-              receipt,
+              receipt: serializableReceipt,
             })
           })
           .catch((error) => {
