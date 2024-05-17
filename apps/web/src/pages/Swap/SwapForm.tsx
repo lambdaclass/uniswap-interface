@@ -306,10 +306,7 @@ export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapF
   )
 
   const maximumAmountIn = useMaxAmountIn(trade, allowedSlippage)
-  let router_address = '0x3D91f511c789783766200B3934CE38b60b57cE27'
-  if (chainId !== ChainId.ZKSYNC) {
-    router_address = UNIVERSAL_ROUTER_ADDRESS(chainId ?? 1)
-  }
+  const router_address = UNIVERSAL_ROUTER_ADDRESS(chainId ?? 1)
   const allowance = usePermit2Allowance(
     maximumAmountIn ??
       (parsedAmounts[Field.INPUT]?.currency.isToken
