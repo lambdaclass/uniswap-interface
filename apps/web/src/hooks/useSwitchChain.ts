@@ -14,8 +14,6 @@ export function useSwitchChain() {
 
   return useCallback(
     (connector: Connector, chainId: ChainId) => {
-      console.log('useSwitchChain -> chainId', chainId)
-      console.log('useSwitchChain -> connector', connector)
       if (!isSupportedChain(chainId)) {
         throw new Error(`Chain ${chainId} not supported for connector (${typeof connector})`)
       } else {

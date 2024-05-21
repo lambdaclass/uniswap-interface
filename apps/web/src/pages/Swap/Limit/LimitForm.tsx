@@ -431,7 +431,6 @@ function SubmitOrderButton({
   }
 
   if (hasInsufficientFunds) {
-    console.log('Insufficient forms')
     return (
       <ButtonError disabled>
         <Text fontSize={20}>
