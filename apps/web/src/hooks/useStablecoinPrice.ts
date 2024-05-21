@@ -43,7 +43,7 @@ export const STABLECOIN_AMOUNT_OUT: { [key in SupportedInterfaceChain]: Currency
   [ChainId.POLYGON_MUMBAI]: CurrencyAmount.fromRawAmount(USDC_POLYGON_MUMBAI, 10_000e6),
   [ChainId.CELO_ALFAJORES]: CurrencyAmount.fromRawAmount(CUSD_CELO_ALFAJORES, 10_000e6),
   [ChainId.BLAST]: CurrencyAmount.fromRawAmount(USDB_BLAST, 10_000e18),
-  [ChainId.ZKSYNC]: CurrencyAmount.fromRawAmount(DAI_ZKSYNC, 10_000e6),
+  [ChainId.ZKSYNC]: CurrencyAmount.fromRawAmount(DAI_ZKSYNC, 10_000e18),
 }
 
 /**
