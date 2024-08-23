@@ -18,6 +18,7 @@ import {
   DAI_BSC,
   DAI_OPTIMISM,
   DAI_POLYGON,
+  DAI_ZKSYNC,
   ETH_BSC,
   OP,
   PORTAL_ETH_CELO,
@@ -46,6 +47,7 @@ import {
   WETH_AVALANCHE,
   WETH_POLYGON,
   WETH_POLYGON_MUMBAI,
+  WETH_ZKSYNC,
   WRAPPED_NATIVE_CURRENCY,
   nativeOnChain,
 } from './tokens'
@@ -161,6 +163,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     USDT_AVALANCHE,
     WETH_AVALANCHE,
   ].map(buildCurrencyInfo),
+  [ChainId.ZKSYNC]: [nativeOnChain(ChainId.ZKSYNC), WETH_ZKSYNC, DAI_ZKSYNC].map(buildCurrencyInfo),
 }
 
 // used to construct the list of all pairs we consider by default in the frontend

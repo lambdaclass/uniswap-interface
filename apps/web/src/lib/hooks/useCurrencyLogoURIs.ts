@@ -20,6 +20,7 @@ type Network =
   | 'avalanchec'
   | 'base'
   | 'blast'
+  | 'zksync'
 
 export function chainIdToNetworkName(networkId: ChainId): Network {
   switch (networkId) {

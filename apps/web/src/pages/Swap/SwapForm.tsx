@@ -6,7 +6,7 @@ import {
   SharedEventName,
   SwapEventName,
 } from '@uniswap/analytics-events'
-import { Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
+import { ChainId, Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { Trace, TraceEvent, sendAnalyticsEvent, useTrace } from 'analytics'
@@ -80,7 +80,7 @@ interface SwapFormProps {
 
 export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapFormProps) {
   const connectionReady = useConnectionReady()
-  const { account, chainId: connectedChainId, connector } = useWeb3React()
+  const { account, chainId: connectedChainId } = useWeb3React()
   const trace = useTrace()
 
   const { chainId, prefilledState, currencyState } = useSwapAndLimitContext()
@@ -306,12 +306,13 @@ export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapF
   )
 
   const maximumAmountIn = useMaxAmountIn(trade, allowedSlippage)
+  const router_address = UNIVERSAL_ROUTER_ADDRESS(chainId ?? 1)
   const allowance = usePermit2Allowance(
     maximumAmountIn ??
       (parsedAmounts[Field.INPUT]?.currency.isToken
         ? (parsedAmounts[Field.INPUT] as CurrencyAmount<Token>)
         : undefined),
-    isSupportedChain(chainId) ? UNIVERSAL_ROUTER_ADDRESS(chainId) : undefined,
+    router_address,
     trade?.fillType
   )
 
@@ -470,7 +471,7 @@ export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapF
   )
 
   const inputCurrency = currencies[Field.INPUT] ?? undefined
-  const switchChain = useSwitchChain()
+  useSwitchChain()
   const switchingChain = useAppSelector((state) => state.wallets.switchingChain)
 
   return (
@@ -616,18 +617,7 @@ export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapF
           ) : chainId && chainId !== connectedChainId ? (
             <ButtonPrimary
               $borderRadius="16px"
-              onClick={async () => {
-                try {
-                  await switchChain(connector, chainId)
-                } catch (error) {
-                  if (didUserReject(error)) {
-                    // Ignore error, which keeps the user on the previous chain.
-                  } else {
-                    // TODO(WEB-3306): This UX could be improved to show an error state.
-                    throw error
-                  }
-                }
-              }}
+              onClick={() => alert(`chain: ${chainId}. connected: ${connectedChainId}`)}
             >
               Connect to {getChainInfo(chainId)?.label}
             </ButtonPrimary>

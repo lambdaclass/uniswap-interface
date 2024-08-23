@@ -88,10 +88,14 @@ export const routingApi = createApi({
           } = args
 
           const requestBody = {
-            tokenInChainId,
-            tokenIn,
-            tokenOutChainId,
-            tokenOut,
+            // tokenInChainId,
+            tokenInChainId: 1,
+            // tokenIn,
+            tokenIn: 'WETH',
+            // tokenOutChainId,
+            tokenOutChainId: 1,
+            // tokenOut,
+            tokenOut: 'DAI',
             amount,
             sendPortionEnabled,
             type: isExactInput(tradeType) ? 'EXACT_INPUT' : 'EXACT_OUTPUT',
@@ -102,7 +106,7 @@ export const routingApi = createApi({
 
           try {
             return trace.child({ name: 'Quote on server', op: 'quote.server' }, async () => {
-              const response = await fetch({
+              const res = await fetch({
                 method: 'POST',
                 url: `${UNISWAP_GATEWAY_DNS_URL}/quote`,
                 body: JSON.stringify(requestBody),
@@ -110,6 +114,19 @@ export const routingApi = createApi({
                   'x-request-source': 'uniswap-web',
                 },
               })
+
+              const response = JSON.parse(
+                JSON.stringify(res)
+                  .replaceAll(
+                    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+                    '0x979f9e8cb1140b6ffded4b21bd3552eebe6a40d4'
+                  )
+                  .replaceAll(
+                    '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+                    '0x5E6D086F5eC079ADFF4FB3774CDf3e8D6a34F7E9'
+                  )
+                  .replaceAll(`\"chainId\":1`, `\"chainId\":270`)
+              )
 
               if (response.error) {
                 try {

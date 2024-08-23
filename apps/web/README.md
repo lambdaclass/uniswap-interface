@@ -8,9 +8,18 @@ or visit [app.uniswap.org](https://app.uniswap.org).
 
 ## Running the interface locally
 
+The first time, you might run this commands **on the root of the repo** to remove some typescript errors:
+
+```bash
+yarn utilities build
+yarn uniswap build
+```
+
+Then start the server
+
 ```bash
 yarn
-yarn web start
+yarn start
 ```
 
 ## Accessing Uniswap V2

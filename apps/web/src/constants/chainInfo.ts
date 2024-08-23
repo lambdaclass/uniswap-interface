@@ -241,6 +241,16 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_81457,
   },
+  [ChainId.ZKSYNC]: {
+    networkType: NetworkType.L2,
+    bridge: 'https://wallet.zksync.io/bridge',
+    docs: 'https://zksync.io/',
+    explorer: 'https://zkscan.io/',
+    infoLink: 'https://info.uniswap.org/#/zksync/',
+    label: 'zkSync',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    color: darkTheme.chain_42161,
+  },
 } as const
 
 export function getChainInfo(

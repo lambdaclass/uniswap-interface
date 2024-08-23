@@ -22,6 +22,7 @@ export const FEE_AMOUNT_DETAIL: Record<
       ChainId.AVALANCHE,
       ChainId.BASE,
       ChainId.BLAST,
+      ChainId.ZKSYNC,
     ],
   },
   [FeeAmount.LOW]: {
