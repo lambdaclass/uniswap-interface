@@ -32,12 +32,12 @@ const UploadLink = styled.a`
   color: ${({ theme }) => theme.neutral2};
   cursor: pointer;
 
-  ${OpacityHoverState}
-
   @media only screen and (max-width: ${({ theme }) => `${theme.breakpoint.sm}px`}) {
     right: 12px;
     top: 28px;
   }
+
+  ${OpacityHoverState}
 `
 
 const TxCompleteModal = () => {
@@ -85,8 +85,7 @@ const TxCompleteModal = () => {
     window.open(
       generateTweetForPurchase(nftsPurchased, txHashUrl),
       'newwindow',
-      `left=${(window.screen.width - TWITTER_WIDTH) / 2}, top=${
-        (window.screen.height - TWITTER_HEIGHT) / 2
+      `left=${(window.screen.width - TWITTER_WIDTH) / 2}, top=${(window.screen.height - TWITTER_HEIGHT) / 2
       }, width=${TWITTER_WIDTH}, height=${TWITTER_HEIGHT}`
     )
   }
@@ -291,8 +290,7 @@ const TxCompleteModal = () => {
                     </Box>
                     <p className={styles.bodySmall}>
                       {txState === TxStateType.Success &&
-                        `Selected item${
-                          nftsPurchased.length === 1 ? ' is' : 's are'
+                        `Selected item${nftsPurchased.length === 1 ? ' is' : 's are'
                         } no longer available. Uniswap instantly refunded you for this incomplete transaction. `}
                       {formatNumberOrString({ input: txFeeFiat, type: NumberType.FiatNFTToken })} was used for gas in
                       attempt to complete this transaction. For support, please visit our{' '}

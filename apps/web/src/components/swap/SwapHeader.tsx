@@ -1,6 +1,5 @@
 import { Trans } from '@lingui/macro'
 import { ChainId } from '@uniswap/sdk-core'
-import { useLimitsEnabled } from 'featureFlags/flags/limits'
 import { useSendEnabled } from 'featureFlags/flags/send'
 import { useSwapAndLimitContext, useSwapContext } from 'state/swap/SwapContext'
 import styled from 'styled-components'
@@ -11,7 +10,6 @@ import { useCallback, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { RowBetween, RowFixed } from '../Row'
 import SettingsTab from '../Settings'
-import SwapBuyFiatButton from './SwapBuyFiatButton'
 import { SwapTab } from './constants'
 import { SwapHeaderTabButton } from './styled'
 
@@ -21,22 +19,19 @@ const StyledSwapHeader = styled(RowBetween)`
   color: ${({ theme }) => theme.neutral2};
 `
 
-const HeaderButtonContainer = styled(RowFixed)<{ compact: boolean }>`
-  gap: ${({ compact }) => (compact ? 0 : 16)}px;
-
+const HeaderButtonContainer = styled(RowFixed) <{ compact: boolean }>`
   ${SwapHeaderTabButton} {
     ${({ compact }) => compact && 'padding: 8px 12px;'}
   }
 `
 
 const PathnameToTab: { [key: string]: SwapTab } = {
-  '/swap': SwapTab.Swap,
+  '/': SwapTab.Swap,
   '/send': SwapTab.Send,
   '/limit': SwapTab.Limit,
 }
 
 export default function SwapHeader({ compact, syncTabToUrl }: { compact: boolean; syncTabToUrl: boolean }) {
-  const limitsEnabled = useLimitsEnabled()
   const sendEnabled = useSendEnabled() && !isIFramed()
   const { chainId, currentTab, setCurrentTab } = useSwapAndLimitContext()
   const {
@@ -52,7 +47,7 @@ export default function SwapHeader({ compact, syncTabToUrl }: { compact: boolean
     }
 
     setCurrentTab(PathnameToTab[pathname] ?? SwapTab.Swap)
-  }, [chainId, limitsEnabled, navigate, pathname, setCurrentTab])
+  }, [chainId, navigate, pathname, setCurrentTab])
 
   // Limits is only available on mainnet for now
   if (chainId !== ChainId.MAINNET && currentTab === SwapTab.Limit) {
@@ -75,7 +70,6 @@ export default function SwapHeader({ compact, syncTabToUrl }: { compact: boolean
     <StyledSwapHeader>
       <HeaderButtonContainer compact={compact}>
         <SwapHeaderTabButton
-          as={pathname === '/swap' ? 'h1' : 'button'}
           role="button"
           tabIndex={0}
           $isActive={currentTab === SwapTab.Swap}
@@ -85,16 +79,6 @@ export default function SwapHeader({ compact, syncTabToUrl }: { compact: boolean
         >
           <Trans>Swap</Trans>
         </SwapHeaderTabButton>
-        {limitsEnabled && chainId === ChainId.MAINNET && (
-          <SwapHeaderTabButton
-            $isActive={currentTab === SwapTab.Limit}
-            onClick={() => {
-              onTab(SwapTab.Limit)
-            }}
-          >
-            <Trans>Limit</Trans>
-          </SwapHeaderTabButton>
-        )}
         {sendEnabled && (
           <SwapHeaderTabButton
             $isActive={currentTab === SwapTab.Send}
@@ -105,7 +89,6 @@ export default function SwapHeader({ compact, syncTabToUrl }: { compact: boolean
             <Trans>Send</Trans>
           </SwapHeaderTabButton>
         )}
-        <SwapBuyFiatButton />
       </HeaderButtonContainer>
       {currentTab === SwapTab.Swap && (
         <RowFixed>

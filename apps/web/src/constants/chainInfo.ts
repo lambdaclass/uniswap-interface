@@ -32,6 +32,8 @@ export function getBlocksPerMainnetEpochForChainId(chainId: number | undefined):
       return 6
     case ChainId.CELO:
       return 2
+    case ChainId.ETHREX:
+      return 2
     default:
       return 1
   }
@@ -242,6 +244,19 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_84531,
   },
+  [ChainId.ETHREX]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms(`25m`),
+    bridge: '',
+    defaultListUrl: '',
+    docs: 'https://docs.ethrex.xyz',
+    explorer: 'https://localhost:1234',
+    infoLink: 'https://docs.ethrex.xyz',
+    label: 'Ethrex',
+    statusPage: '',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    color: darkTheme.chain_84531,
+  }
 } as const
 
 export function getChainInfo(

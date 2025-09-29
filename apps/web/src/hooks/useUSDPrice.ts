@@ -19,6 +19,7 @@ const ETH_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Currency> } = {
   [ChainId.OPTIMISM]: CurrencyAmount.fromRawAmount(nativeOnChain(ChainId.OPTIMISM), 10e18),
   [ChainId.POLYGON]: CurrencyAmount.fromRawAmount(nativeOnChain(ChainId.POLYGON), 10_000e18),
   [ChainId.CELO]: CurrencyAmount.fromRawAmount(nativeOnChain(ChainId.CELO), 10e18),
+  [ChainId.ETHREX]: CurrencyAmount.fromRawAmount(nativeOnChain(ChainId.ETHREX), 10e18),
 }
 
 function useETHPrice(currency?: Currency): {

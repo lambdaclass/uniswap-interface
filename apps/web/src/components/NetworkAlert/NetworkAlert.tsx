@@ -11,7 +11,7 @@ import { useIsDarkMode } from 'theme/components/ThemeToggle'
 
 import Column from '../Column'
 
-const BridgeLink = styled(ExternalLink)<{ bgColor: string }>`
+const BridgeLink = styled(ExternalLink) <{ bgColor: string }>`
   color: ${({ color }) => color};
   background: ${({ bgColor }) => bgColor};
   align-items: center;
@@ -35,12 +35,12 @@ const BridgeLink = styled(ExternalLink)<{ bgColor: string }>`
   margin-top: 16px;
 `
 
-const TitleText = styled(ThemedText.BodyPrimary)<{ $color: string }>`
+const TitleText = styled(ThemedText.BodyPrimary) <{ $color: string }>`
   font-weight: 535;
   color: ${({ $color }) => $color};
 `
 
-const SubtitleText = styled(ThemedText.BodySmall)<{ $color: string }>`
+const SubtitleText = styled(ThemedText.BodySmall) <{ $color: string }>`
   line-height: 20px;
   color: ${({ $color }) => $color};
 `
@@ -52,7 +52,7 @@ export function NetworkAlert() {
   if (!chainId || !isSupportedChain(chainId)) return null
 
   const { Symbol: ChainSymbol, bgColor, textColor } = getChainUI(chainId, darkMode)
-  const { label, bridge } = getChainInfo(chainId)
+  const { label, bridge } = getChainInfo(chainId) || {}
 
   return bridge ? (
     <BridgeLink href={bridge} bgColor={bgColor}>

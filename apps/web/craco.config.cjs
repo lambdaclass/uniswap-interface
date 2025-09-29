@@ -8,6 +8,7 @@ const path = require('path')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const { IgnorePlugin, ProvidePlugin } = require('webpack')
 const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
+const { NormalModuleReplacementPlugin } = require('webpack')
 
 const commitHash = execSync('git rev-parse HEAD').toString().trim()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -140,6 +141,10 @@ module.exports = {
         fallback: {
           // - react-markdown requires path
           path: require.resolve('path-browserify'),
+          http: false,
+          https: false,
+          fs: false,
+          assert: false,
         },
       })
 
@@ -209,16 +214,16 @@ module.exports = {
         webpackConfig.optimization,
         isProduction
           ? {
-              splitChunks: {
-                // Cap the chunk size to 5MB.
-                // react-scripts suggests a chunk size under 1MB after gzip, but we can only measure maxSize before gzip.
-                // react-scripts also caps cacheable chunks at 5MB, which gzips to below 1MB, so we cap chunk size there.
-                // See https://github.com/facebook/create-react-app/blob/d960b9e/packages/react-scripts/config/webpack.config.js#L713-L716.
-                maxSize: 5 * 1024 * 1024,
-                // Optimize over all chunks, instead of async chunks (the default), so that initial chunks are also optimized.
-                chunks: 'all',
-              },
-            }
+            splitChunks: {
+              // Cap the chunk size to 5MB.
+              // react-scripts suggests a chunk size under 1MB after gzip, but we can only measure maxSize before gzip.
+              // react-scripts also caps cacheable chunks at 5MB, which gzips to below 1MB, so we cap chunk size there.
+              // See https://github.com/facebook/create-react-app/blob/d960b9e/packages/react-scripts/config/webpack.config.js#L713-L716.
+              maxSize: 5 * 1024 * 1024,
+              // Optimize over all chunks, instead of async chunks (the default), so that initial chunks are also optimized.
+              chunks: 'all',
+            },
+          }
           : {}
       )
 

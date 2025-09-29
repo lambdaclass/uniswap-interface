@@ -124,6 +124,10 @@ export const PUBLIC_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
     'https://1rpc.io/base',
     'https://base.meowrpc.com',
   ],
+  [ChainId.ETHREX]: [
+    // "Safe" URLs
+    'http://localhost:1729'
+  ]
 }
 
 /**
@@ -145,6 +149,7 @@ export const APP_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
   [ChainId.BNB]: [QUICKNODE_BNB_RPC_URL],
   [ChainId.AVALANCHE]: [`https://avalanche-mainnet.infura.io/v3/${INFURA_KEY}`],
   [ChainId.BASE]: [`https://base-mainnet.infura.io/v3/${INFURA_KEY}`],
+  [ChainId.ETHREX]: PUBLIC_RPC_URLS[ChainId.ETHREX],
 }
 
 export const INFURA_PREFIX_TO_CHAIN_ID: { [prefix: string]: ChainId } = {

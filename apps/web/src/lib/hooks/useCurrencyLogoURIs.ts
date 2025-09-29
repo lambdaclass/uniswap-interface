@@ -4,49 +4,24 @@ import { useMemo } from 'react'
 import { isAddress } from 'utilities/src/addresses'
 
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
-import AvaxLogo from '../../assets/svg/avax_logo.svg'
-import BnbLogo from '../../assets/svg/bnb-logo.svg'
-import CeloLogo from '../../assets/svg/celo_logo.svg'
-import MaticLogo from '../../assets/svg/matic-token-icon.svg'
-import { NATIVE_CHAIN_ID, isCelo, nativeOnChain } from '../../constants/tokens'
+import { NATIVE_CHAIN_ID } from 'constants/tokens'
 
-type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon' | 'smartchain' | 'celo' | 'avalanchec' | 'base'
+
+type Network = 'ethrex'
 
 export function chainIdToNetworkName(networkId: ChainId): Network {
   switch (networkId) {
-    case ChainId.MAINNET:
-      return 'ethereum'
-    case ChainId.ARBITRUM_ONE:
-      return 'arbitrum'
-    case ChainId.OPTIMISM:
-      return 'optimism'
-    case ChainId.POLYGON:
-      return 'polygon'
-    case ChainId.BNB:
-      return 'smartchain'
-    case ChainId.CELO:
-      return 'celo'
-    case ChainId.AVALANCHE:
-      return 'avalanchec'
-    case ChainId.BASE:
-      return 'base'
+    case ChainId.ETHREX:
+      return 'ethrex'
     default:
-      return 'ethereum'
+      return 'ethrex'
   }
 }
 
 export function getNativeLogoURI(chainId: ChainId = ChainId.MAINNET): string {
   switch (chainId) {
-    case ChainId.POLYGON:
-    case ChainId.POLYGON_MUMBAI:
-      return MaticLogo
-    case ChainId.BNB:
-      return BnbLogo
-    case ChainId.CELO:
-    case ChainId.CELO_ALFAJORES:
-      return CeloLogo
-    case ChainId.AVALANCHE:
-      return AvaxLogo
+    case ChainId.ETHREX:
+      return EthereumLogo
     default:
       return EthereumLogo
   }
@@ -62,9 +37,7 @@ function getTokenLogoURI(address: string, chainId: ChainId = ChainId.MAINNET): s
     ChainId.AVALANCHE,
     ChainId.BASE,
   ]
-  if (isCelo(chainId) && address === nativeOnChain(chainId).wrapped.address) {
-    return CeloLogo
-  }
+
 
   if (networksWithUrls.includes(chainId)) {
     return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
@@ -74,12 +47,12 @@ function getTokenLogoURI(address: string, chainId: ChainId = ChainId.MAINNET): s
 export default function useCurrencyLogoURIs(
   currency:
     | {
-        isNative?: boolean
-        isToken?: boolean
-        address?: string
-        chainId: number
-        logoURI?: string | null
-      }
+      isNative?: boolean
+      isToken?: boolean
+      address?: string
+      chainId: number
+      logoURI?: string | null
+    }
     | null
     | undefined
 ): string[] {

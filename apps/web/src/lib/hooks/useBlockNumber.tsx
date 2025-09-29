@@ -8,10 +8,10 @@ import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, 
 const MISSING_PROVIDER = Symbol()
 const BlockNumberContext = createContext<
   | {
-      fastForward(block: number): void
-      block?: number
-      mainnetBlock?: number
-    }
+    fastForward(block: number): void
+    block?: number
+    mainnetBlock?: number
+  }
   | typeof MISSING_PROVIDER
 >(MISSING_PROVIDER)
 
@@ -85,9 +85,9 @@ export function BlockNumberProvider({ children }: { children: ReactNode }) {
   // Poll once for the mainnet block number using the network provider.
   const networkProviders = useFallbackProviderEnabled() ? RPC_PROVIDERS : DEPRECATED_RPC_PROVIDERS
   useEffect(() => {
-    networkProviders[ChainId.MAINNET]
+    networkProviders[ChainId.ETHREX]
       .getBlockNumber()
-      .then((block) => onChainBlock(ChainId.MAINNET, block))
+      .then((block) => onChainBlock(ChainId.ETHREX, block))
       // swallow errors - it's ok if this fails, as we'll try again if we activate mainnet
       .catch(() => undefined)
   }, [networkProviders, onChainBlock])

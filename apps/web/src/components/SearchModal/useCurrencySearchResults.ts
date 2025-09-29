@@ -74,7 +74,7 @@ export function useCurrencySearchResults({
       // If there is no query, filter out unselected user-added tokens with no balance.
       if (!searchQuery && token instanceof UserAddedToken) {
         if (selectedCurrency?.equals(token) || otherSelectedCurrency?.equals(token)) return true
-        return balanceMap[token.address.toLowerCase()]?.usdValue > 0
+        return true
       }
 
       return true
