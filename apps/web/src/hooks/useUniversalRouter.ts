@@ -23,6 +23,7 @@ import { TransactionResponse } from '@ethersproject/abstract-provider'
 import { BigNumber } from '@ethersproject/bignumber'
 import { useGetTransactionDeadline } from 'hooks/useTransactionDeadline'
 import { PermitSignature } from './usePermitAllowance'
+import ms from 'ms'
 
 /** Thrown when gas estimation fails. This class of error usually requires an emulator to determine the root cause. */
 class GasEstimationError extends Error {
@@ -74,7 +75,7 @@ export function useUniversalRouterSwapCallback(
           const connectedChainId = await provider.getSigner().getChainId()
           if (chainId !== connectedChainId) throw new WrongChainError()
 
-          const deadline = await getDeadline()
+          const deadline = BigNumber.from(Math.floor((Date.now() + ms('20m')) / 1000))
 
           trace.setData('slippageTolerance', options.slippageTolerance.toFixed(2))
           const { calldata: data, value } = SwapRouter.swapERC20CallParameters(trade, {
