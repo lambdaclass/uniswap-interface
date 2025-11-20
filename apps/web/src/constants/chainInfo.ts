@@ -250,7 +250,7 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: '',
     defaultListUrl: '',
     docs: 'https://docs.ethrex.xyz',
-    explorer: 'https://localhost:1234',
+    explorer: 'http://localhost:8082',
     infoLink: 'https://docs.ethrex.xyz',
     label: 'Ethrex',
     statusPage: '',
