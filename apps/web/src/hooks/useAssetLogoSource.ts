@@ -6,7 +6,8 @@ import uriToHttp from 'lib/utils/uriToHttp'
 import { useCallback, useMemo, useReducer } from 'react'
 import { isAddress } from 'utilities/src/addresses'
 
-import celoLogo from '../assets/svg/celo_logo.svg'
+// import celoLogo from '../assets/svg/celo_logo.svg'
+import wethLogo from '../assets/images/weth_logo.png'
 
 const BAD_SRCS: { [tokenAddress: string]: true } = {}
 
@@ -50,7 +51,7 @@ export function getInitialUrl(
   const checksummedAddress = isAddress(address)
 
   if (chainId && address === nativeOnChain(chainId).wrapped.address) {
-    return celoLogo
+    return wethLogo
   }
 
   if (checksummedAddress) {
