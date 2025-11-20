@@ -14,7 +14,7 @@ export const TEST_ETHREX = new Token(
 
 export const WETH_ETHREX = new Token(
   ChainId.ETHREX,
-  '0x36CCFC7163a2C2cdF7a6D6DA202eb9c7aa18E4eA',
+  '0x000000000000000000000000000000000000FfFD',
   18,
   'WETH',
   'Wrapped Ether'
